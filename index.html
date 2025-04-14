@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <audio id="background-music" src="DidITellYouThatIMissYou.mp3" loop></audio>
+
   <header>
     <h1>SolarHQ Bot</h1>
     <nav>
@@ -14,6 +16,7 @@
       <a href="commands.html">Commands</a>
       <a id="login-btn">Login</a>
       <a id="invite-btn" class="invite">Invite Bot</a>
+      <a id="settingsBtn">Settings</a>
     </nav>
   </header>
 
@@ -48,25 +51,29 @@
     <p>© 2025 SolarHQ Bot - Made with ❤️</p>
   </footer>
 
-  <!-- Settings Button -->
-  <button id="settingsBtn">Settings</button>
-
   <!-- Settings Panel -->
-  <div id="settingsPanel" class="hidden">
-    <div class="settings-content">
-      <h2>Settings</h2>
-      <label>Background Color:</label>
-      <input type="color" id="bgColorPicker" />
-      <br><br>
-      <label>Text Color:</label>
-      <input type="color" id="textColorPicker" />
-      <br><br>
-      <label>Music Controls:</label><br>
-      <audio id="bgMusic" src="DidITellYouThatIMissYou.mp3" loop></audio>
-      <button onclick="document.getElementById('bgMusic').play()">Play</button>
-      <button onclick="document.getElementById('bgMusic').pause()">Pause</button>
-      <input type="range" min="0" max="1" step="0.01" value="1" onchange="document.getElementById('bgMusic').volume = this.value" />
-    </div>
+  <div id="settingsPanel" class="settings-panel hidden">
+    <h2>Customize Your Experience</h2>
+    <label>Background Color: <input type="color" id="bgColor" /></label><br>
+    <label>Text Color: <input type="color" id="textColor" /></label><br>
+    <label>Button Color: <input type="color" id="buttonColor" /></label><br>
+    <label>Choose Font:
+      <select id="fontSelector">
+        <option value="Arial">Arial</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+      </select>
+    </label><br>
+    <label>Upload Background Image: <input type="file" id="bgImage" accept="image/*" /></label><br>
+    <hr>
+    <h3>Music Player</h3>
+    <button id="playMusic">Play</button>
+    <button id="pauseMusic">Pause</button>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" />
+    <button id="muteMusic">Mute</button>
+    <br><br>
+    <button id="closeSettings">Close</button>
   </div>
 
   <script src="script.js"></script>
