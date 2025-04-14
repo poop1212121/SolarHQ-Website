@@ -1,6 +1,6 @@
 const CLIENT_ID = "1361359933030793216";
 const REDIRECT_URI = "https://solar-hq.vercel.app/dashboard.html";
-const BOT_INVITE = `https://discord.com/oauth2/authorize?client_id=${CLIENT_ID}&permissions=8&integration_type=0&scope=bot`;
+const BOT_INVITE = `https://discord.com/oauth2/authorize?client_id=1361359933030793216&permissions=8&integration_type=0&scope=bot`;
 const DISCORD_OAUTH = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify guilds`;
 
 document.getElementById("login-btn").onclick = () => {
@@ -15,53 +15,47 @@ document.getElementById("invite-btn").onclick = () => {
   window.location.href = BOT_INVITE;
 };
 
-const settingsBtn = document.getElementById("settingsBtn");
-const settingsPanel = document.getElementById("settingsPanel");
-const closeSettings = document.getElementById("closeSettings");
-const themeColorInput = document.getElementById("themeColor");
-const textColorInput = document.getElementById("textColor");
-const backgroundImageInput = document.getElementById("backgroundImage");
-const resetSettings = document.getElementById("resetSettings");
-
-// Show settings panel
-settingsBtn.onclick = () => {
-  settingsPanel.classList.add("active");
+document.getElementById("invite-btn-hero").onclick = () => {
+  window.location.href = BOT_INVITE;
 };
 
-// Hide settings panel
-closeSettings.onclick = () => {
-  settingsPanel.classList.remove("active");
-};
+// Settings Panel functionality
+const settingsBtn = document.getElementById('settingsBtn');
+const settingsPanel = document.getElementById('settingsPanel');
+const closeSettingsBtn = document.getElementById('closeSettings');
+const musicToggle = document.getElementById('musicToggle');
+const volumeSlider = document.getElementById('volumeSlider');
+const volumeNumber = document.getElementById('volumeNumber');
+const volumeDisplay = document.getElementById('volumeDisplay');
 
-// Change theme color
-themeColorInput.oninput = () => {
-  document.documentElement.style.setProperty("--theme-color", themeColorInput.value);
-  document.querySelectorAll("header, .actions button, #settingsPanel button").forEach(el => {
-    el.style.background = themeColorInput.value;
-  });
-};
+// Open/Close settings panel
+settingsBtn.addEventListener('click', () => {
+  settingsPanel.classList.toggle('active');
+});
 
-// Change text color
-textColorInput.oninput = () => {
-  document.body.style.color = textColorInput.value;
-};
+// Close settings panel
+closeSettingsBtn.addEventListener('click', () => {
+  settingsPanel.classList.remove('active');
+});
 
-// Background image upload
-backgroundImageInput.onchange = (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      document.body.style.backgroundImage = `url(${event.target.result})`;
-    };
-    reader.readAsDataURL(file);
+// Music toggle logic
+musicToggle.addEventListener('change', () => {
+  if (musicToggle.checked) {
+    document.querySelector('.toggle-label').textContent = "On";
+  } else {
+    document.querySelector('.toggle-label').textContent = "Off";
   }
-};
+});
 
-// Reset
-resetSettings.onclick = () => {
-  document.body.style = "";
-  document.querySelectorAll("header, .actions button, #settingsPanel button").forEach(el => {
-    el.style.background = "";
-  });
-};
+// Volume control logic
+volumeSlider.addEventListener('input', () => {
+  const volumeValue = volumeSlider.value;
+  volumeNumber.value = volumeValue;
+  volumeDisplay.textContent = `${volumeValue}%`;
+});
+
+volumeNumber.addEventListener('input', () => {
+  const volumeValue = volumeNumber.value;
+  volumeSlider.value = volumeValue;
+  volumeDisplay.textContent = `${volumeValue}%`;
+});
