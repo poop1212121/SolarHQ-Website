@@ -14,7 +14,6 @@
       <a href="commands.html">Commands</a>
       <a id="login-btn">Login</a>
       <a id="invite-btn" class="invite">Invite Bot</a>
-      <a id="settings-btn">Settings</a>
     </nav>
   </header>
 
@@ -49,82 +48,27 @@
     <p>© 2025 SolarHQ Bot - Made with ❤️</p>
   </footer>
 
-  <!-- 🎵 Music -->
-  <audio id="bg-music" src="DidITellYouThatIMissYou.mp3" loop></audio>
+  <!-- Settings Button -->
+  <button id="settingsBtn">Settings</button>
 
-  <!-- ⚙️ Settings Modal -->
-  <div id="settings-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn">&times;</span>
+  <!-- Settings Panel -->
+  <div id="settingsPanel" class="hidden">
+    <div class="settings-content">
       <h2>Settings</h2>
-      <div class="setting-group">
-        <label>🎨 Background Color:</label>
-        <input type="color" id="bg-color-picker" />
-      </div>
-      <div class="setting-group">
-        <label>🌗 Theme:</label>
-        <select id="theme-toggle">
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
-        </select>
-      </div>
-      <div class="setting-group">
-        <label>🎵 Music Controls:</label>
-        <div class="music-controls">
-          <button id="play-music">Play</button>
-          <button id="pause-music">Pause</button>
-          <button id="mute-music">Mute</button>
-          <input type="range" id="volume-slider" min="0" max="1" step="0.01" />
-        </div>
-      </div>
+      <label>Background Color:</label>
+      <input type="color" id="bgColorPicker" />
+      <br><br>
+      <label>Text Color:</label>
+      <input type="color" id="textColorPicker" />
+      <br><br>
+      <label>Music Controls:</label><br>
+      <audio id="bgMusic" src="DidITellYouThatIMissYou.mp3" loop></audio>
+      <button onclick="document.getElementById('bgMusic').play()">Play</button>
+      <button onclick="document.getElementById('bgMusic').pause()">Pause</button>
+      <input type="range" min="0" max="1" step="0.01" value="1" onchange="document.getElementById('bgMusic').volume = this.value" />
     </div>
   </div>
 
-  <script>
-    const settingsBtn = document.getElementById('settings-btn');
-    const modal = document.getElementById('settings-modal');
-    const closeBtn = document.querySelector('.close-btn');
-    const bgPicker = document.getElementById('bg-color-picker');
-    const themeToggle = document.getElementById('theme-toggle');
-    const music = document.getElementById('bg-music');
-    const volumeSlider = document.getElementById('volume-slider');
-
-    settingsBtn.onclick = () => modal.style.display = 'block';
-    closeBtn.onclick = () => modal.style.display = 'none';
-    window.onclick = (e) => { if (e.target == modal) modal.style.display = 'none'; };
-
-    // Color Picker
-    bgPicker.oninput = () => {
-      document.body.style.background = bgPicker.value;
-      localStorage.setItem('bgColor', bgPicker.value);
-    };
-
-    // Theme Toggle
-    themeToggle.onchange = () => {
-      document.body.className = themeToggle.value === 'light' ? 'light-theme' : '';
-      localStorage.setItem('theme', themeToggle.value);
-    };
-
-    // Load saved settings
-    window.onload = () => {
-      const savedColor = localStorage.getItem('bgColor');
-      const savedTheme = localStorage.getItem('theme');
-      if (savedColor) {
-        document.body.style.background = savedColor;
-        bgPicker.value = savedColor;
-      }
-      if (savedTheme === 'light') {
-        document.body.className = 'light-theme';
-        themeToggle.value = 'light';
-      }
-      music.volume = 0.5;
-    };
-
-    // Music Controls
-    document.getElementById('play-music').onclick = () => music.play();
-    document.getElementById('pause-music').onclick = () => music.pause();
-    document.getElementById('mute-music').onclick = () => music.muted = !music.muted;
-    volumeSlider.oninput = () => music.volume = volumeSlider.value;
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
