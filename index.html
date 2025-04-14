@@ -2,77 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SolarHQ Bot - Discord Bot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Solar HQ</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="background-music" src="DidITellYouThatIMissYou.mp3" loop></audio>
-
   <header>
-    <h1>SolarHQ Bot</h1>
+    <h1>Solar HQ</h1>
     <nav>
-      <a href="#features">Features</a>
-      <a href="commands.html">Commands</a>
       <a id="login-btn">Login</a>
-      <a id="invite-btn" class="invite">Invite Bot</a>
+      <a id="commands-link" href="#">Commands</a>
       <a id="settingsBtn">Settings</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Powerful Discord Bot for Games, Levels, and More.</h2>
-    <p>Invite SolarHQ Bot to your server and level up your community.</p>
+    <h2>Welcome to Solar HQ</h2>
+    <p>Your ultimate Discord companion.</p>
     <div class="actions">
-      <button id="login-btn-hero">Login with Discord</button>
-      <button id="invite-btn-hero" class="invite">Invite SolarHQ Bot</button>
+      <button id="login-btn-hero">Login</button>
+      <button id="invite-btn" class="invite">Invite Bot</button>
     </div>
   </section>
 
-  <section id="features" class="features">
+  <section class="features">
     <h3>Features</h3>
     <div class="feature-grid">
-      <div class="feature">
-        <h4>Fun</h4>
-        <p>Play games, Earn money, Earn levels, Earn XP, View leaderboards, and more.</p>
-      </div>
-      <div class="feature">
-        <h4>Custom Commands</h4>
-        <p>Create flexible custom commands with variables.</p>
-      </div>
-      <div class="feature">
-        <h4>Suggest Commands</h4>
-        <p>Besure to suggest commands to me so I can add them.</p>
-      </div>
+      <div class="feature">Fast and reliable</div>
+      <div class="feature">Customizable commands</div>
+      <div class="feature">24/7 uptime</div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 SolarHQ Bot - Made with ❤️</p>
+    Made by Solar © 2025
   </footer>
 
   <!-- Settings Panel -->
-  <div id="settingsPanel" class="settings-panel hidden">
-    <h2>Customize Your Experience</h2>
-    <label>Background Color: <input type="color" id="bgColor" /></label><br>
-    <label>Text Color: <input type="color" id="textColor" /></label><br>
-    <label>Button Color: <input type="color" id="buttonColor" /></label><br>
-    <label>Choose Font:
-      <select id="fontSelector">
-        <option value="Arial">Arial</option>
-        <option value="Verdana">Verdana</option>
-        <option value="Courier New">Courier New</option>
-        <option value="Georgia">Georgia</option>
-      </select>
-    </label><br>
-    <label>Upload Background Image: <input type="file" id="bgImage" accept="image/*" /></label><br>
-    <hr>
-    <h3>Music Player</h3>
-    <button id="playMusic">Play</button>
-    <button id="pauseMusic">Pause</button>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.01" />
-    <button id="muteMusic">Mute</button>
-    <br><br>
+  <div id="settingsPanel">
+    <h3>Settings</h3>
+
+    <label for="themeColor">Theme Color</label>
+    <input type="color" id="themeColor" />
+
+    <label for="textColor">Text Color</label>
+    <input type="color" id="textColor" />
+
+    <label for="backgroundImage">Background Image</label>
+    <input type="file" id="backgroundImage" accept="image/*" />
+
+    <button id="resetSettings">Reset to Default</button>
     <button id="closeSettings">Close</button>
   </div>
 
