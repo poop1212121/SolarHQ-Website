@@ -41,6 +41,19 @@
   <div id="settingsPanel">
     <h3>Settings</h3>
 
+    <!-- Music Toggle -->
+    <label for="musicToggle">Music</label>
+    <div class="toggle-container">
+      <input type="checkbox" id="musicToggle">
+      <label for="musicToggle" class="toggle-label">Off</label>
+    </div>
+
+    <!-- Volume Control -->
+    <label for="volumeSlider">Volume</label>
+    <input type="range" id="volumeSlider" min="0" max="100" value="50">
+    <input type="number" id="volumeNumber" value="50" min="0" max="100" />
+    <span id="volumeDisplay">50%</span>
+
     <label for="themeColor">Theme Color</label>
     <input type="color" id="themeColor" />
 
