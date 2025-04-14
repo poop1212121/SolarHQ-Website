@@ -14,6 +14,7 @@
       <a href="commands.html">Commands</a>
       <a id="login-btn">Login</a>
       <a id="invite-btn" class="invite">Invite Bot</a>
+      <a id="settings-btn">⚙️ Settings</a>
     </nav>
   </header>
 
@@ -39,15 +40,91 @@
       </div>
       <div class="feature">
         <h4>Suggest Commands</h4>
-        <p>Besure to suggest commands to me so I can add them.</p>
+        <p>Be sure to suggest commands to me so I can add them.</p>
       </div>
     </div>
   </section>
+
+  <!-- 🎵 Music Player -->
+  <div class="music-player">
+    <audio id="bg-music" src="DidITellYouThatIMissYou.mp3" loop autoplay></audio>
+    <div class="music-controls">
+      <button onclick="togglePlay()">⏯</button>
+      <button onclick="toggleMute()">🔇</button>
+      <input type="range" min="0" max="1" step="0.01" value="0.5" onchange="setVolume(this.value)">
+    </div>
+  </div>
+
+  <!-- ⚙️ Settings Modal -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-settings">&times;</span>
+      <h2>Website Settings</h2>
+      <label>Font Family:
+        <select id="font-select">
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="'Courier New', monospace">Courier New</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+        </select>
+      </label>
+      <label>Background Color:
+        <input type="color" id="bg-color" />
+      </label>
+      <label>Theme:
+        <select id="theme-select">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
+      </label>
+    </div>
+  </div>
 
   <footer>
     <p>© 2025 SolarHQ Bot - Made with ❤️</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Music Controls
+    const music = document.getElementById('bg-music');
+    function togglePlay() {
+      music.paused ? music.play() : music.pause();
+    }
+    function toggleMute() {
+      music.muted = !music.muted;
+    }
+    function setVolume(value) {
+      music.volume = value;
+    }
+
+    // Settings Modal
+    const modal = document.getElementById("settings-modal");
+    const btn = document.getElementById("settings-btn");
+    const span = document.getElementById("close-settings");
+
+    btn.onclick = () => { modal.style.display = "block"; };
+    span.onclick = () => { modal.style.display = "none"; };
+    window.onclick = event => {
+      if (event.target == modal) modal.style.display = "none";
+    };
+
+    // Customization Controls
+    document.getElementById("font-select").onchange = e => {
+      document.body.style.fontFamily = e.target.value;
+    };
+
+    document.getElementById("bg-color").oninput = e => {
+      document.body.style.background = e.target.value;
+    };
+
+    document.getElementById("theme-select").onchange = e => {
+      if (e.target.value === "light") {
+        document.body.style.background = "#f0f0f0";
+        document.body.style.color = "#000";
+      } else {
+        document.body.style.background = "#0f0f11";
+        document.body.style.color = "#fff";
+      }
+    };
+  </script>
 </body>
 </html>
