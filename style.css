@@ -5,6 +5,10 @@ body {
   background: #0f0f11;
   color: white;
   overflow-x: hidden;
+  transition: background 0.5s, color 0.5s;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* Header styles */
@@ -29,6 +33,7 @@ nav a {
   font-weight: bold;
   position: relative;
   transition: color 0.3s;
+  cursor: pointer;
 }
 
 nav a:hover {
@@ -50,7 +55,7 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* Hero section styling */
+/* Hero section */
 .hero {
   padding: 4rem 2rem;
   text-align: center;
@@ -95,7 +100,7 @@ nav a:hover::after {
   background: #2980b9;
 }
 
-/* Features section styling */
+/* Features section */
 .features {
   padding: 3rem 2rem;
   background: #0f0f11;
@@ -128,7 +133,7 @@ nav a:hover::after {
   transform: scale(1.05);
 }
 
-/* Footer styling */
+/* Footer */
 footer {
   padding: 1rem;
   text-align: center;
@@ -140,64 +145,27 @@ footer {
 
 /* Animations */
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes slideUp {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes fadeInUp {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 @keyframes bounceIn {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* Settings GUI */
-#settingsBtn {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: #8e44ff;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
+/* Settings Panel */
 #settingsPanel {
   position: fixed;
   top: 100%;
@@ -210,7 +178,7 @@ footer {
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   opacity: 0;
-  transition: all 0.6s ease-in-out;
+  transition: all 0.5s ease;
   z-index: 999;
   pointer-events: none;
 }
@@ -222,6 +190,26 @@ footer {
   pointer-events: auto;
 }
 
-.hidden {
-  display: none;
+#settingsPanel label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+#settingsPanel input,
+#settingsPanel button {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+}
+
+#settingsPanel button {
+  background: #8e44ff;
+  color: white;
+  cursor: pointer;
+}
+
+#settingsPanel button:hover {
+  background: #732dd9;
 }
